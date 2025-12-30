@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - ResumeAI{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="flex justify-between items-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">My Resumes</h1>
+        <a href="/builder"
+            class="flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-indigo-700">
+            <!-- Heroicon name: solid/plus -->
+            <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                    clip-rule="evenodd" />
+            </svg>
+            New Resume
+        </a>
+    </div>
+
+    <!-- Resumes List -->
+    {% if resumes %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for resume in resumes %}
+        <div class="bg-white rounded-lg shadow border border-gray-200 p-6 hover:shadow-lg transition-all">
+            <h3 class="text-xl font-bold text-gray-900">{{ resume.full_name }}</h3>
+            <p class="text-sm text-gray-500 mb-4">{{ resume.created_at.strftime('%Y-%m-%d') if resume.created_at else
+                'Just now' }}</p>
+            <div class="flex space-x-3">
+                <a href="/p/{{ resume.id }}" target="_blank"
+                    class="text-brand hover:text-blue-700 font-medium flex items-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    View
+                </a>
+                <a href="#" class="text-gray-500 hover:text-indigo-700 font-medium">Edit</a>
+                <a href="#" class="text-gray-500 hover:text-red-600 font-medium">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <!-- Empty State (initially) -->
+    <div class="text-center py-20 bg-white rounded-lg border-2 border-dashed border-gray-300">
+        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <h3 class="mt-2 text-sm font-medium text-gray-900">No resumes yet</h3>
+        <p class="mt-1 text-sm text-gray-500">Get started by creating your first AI-powered resume.</p>
+        <div class="mt-6">
+            <a href="/builder"
+                class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-indigo-700">
+                Create Resume
+            </a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
