@@ -11,18 +11,16 @@ An intelligent resume builder powered by Gemini AI. Create ATS-friendly resumes,
 
 ## Deployment
 
-You can deploy this application for free on Render.
+You can deploy this application for free on Vercel.
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/vikash0885/ai-resume-builder)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvikash0885%2Fai-resume-builder&env=GEMINI_API_KEY,MONGODB_URL)
 
 ### Setup Instructions
 
-1.  Click the "Deploy to Render" button above.
-2.  Sign in with your GitHub account.
-3.  In the deployment setup, you will be asked for Environment Variables.
-4.  Enter your secrets:
-    *   `GEMINI_API_KEY`: Your Google Gemini API Key.
-    *   `MONGODB_URL`: Your MongoDB connection string.
+1.  Click the "Deploy with Vercel" button above.
+2.  Sign in with GitHub.
+3.  Vercel will ask for Environment Variables (`GEMINI_API_KEY`, `MONGODB_URL`).
+4.  Enter your keys and click Deploy.
 
 ## Local Development
 
