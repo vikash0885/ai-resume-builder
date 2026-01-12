@@ -16,7 +16,6 @@ venv.bak/
 
 # MongoDB
 data/
-db/
 
 # IDEs
 .vscode/
